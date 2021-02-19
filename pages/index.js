@@ -9,13 +9,15 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
+      <a href="#main-container" className={styles.skiptomain}>Skip to main content</a>
+
+      <main className={styles.main} id="main-container" role="main">
         <h1 className={styles.title}>
           Welcome to blogblog!
         </h1>
 
         <h2 className={styles.description}>
-          NextJS + React + Vercel
+          NextJS + React + SASS + Vercel
         </h2>
 
         <div className={styles.grid}>
@@ -41,10 +43,9 @@ export default function Home() {
         </div>
       </main>
 
-      <footer className={styles.footer}>
+      <footer className={styles.footer} role="contentinfo">
         <a href="#!" target="_blank" rel="noopener noreferrer">
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
+          Made with love by <a href="https://github.com/sg208">github.com/sg208</a>
         </a>
       </footer>
     </div>
