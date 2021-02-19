@@ -117,3 +117,22 @@
       flex-direction: column;
     }
 }
+
+.skiptomain {
+    position: absolute;
+    top: 0;
+    left: -10000px;
+    height: 1px;
+    width: 1px;
+
+    &:focus {        
+        left: 0;
+        padding: 1em;
+        height: auto;
+        width: 100%;
+        background-color: $color-01;
+        font-weight: 600;
+        text-decoration: underline;
+        text-align: center;      
+    }    
+}
