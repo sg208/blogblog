@@ -44,8 +44,8 @@ export default function Home() {
       </main>
 
       <footer className={styles.footer} role="contentinfo">
-        <a href="#!" target="_blank" rel="noopener noreferrer">
-          Made with love by <a href="https://github.com/sg208">github.com/sg208</a>
+        <a href="https://github.com/sg208" target="_blank" rel="noopener noreferrer">
+          Made with love by github.com/sg208
         </a>
       </footer>
     </div>
