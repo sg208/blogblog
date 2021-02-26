@@ -1,6 +1,6 @@
 # blogblog-nextjs
 
-This is a simple blog site built with **NextJS + Reack + SASS/SCSS + Vercel**. This is a mobile first responsive and WCAG 2.0 Level AA Compliant.
+This is a simple blog site built with **NextJS + React + SASS/SCSS + Vercel**. This is a mobile first responsive and WCAG 2.0 Level AA Compliant.
 
 ## Demo URL
 
