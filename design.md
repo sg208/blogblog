@@ -3,7 +3,7 @@
 ## Architecture
 
 - Next.js pages router; one page `pages/index.js`, custom `pages/_document.js`, `pages/_app.js` loads `styles/globals.css`.
-- Styling: SCSS module per page; shared tokens via `styles/_includes.scss` → `styles/configuration/_configuration.module.scss` → colours file. WHY: one place for colour tokens.
+- Styling: SCSS module per page (`@use "includes" as *`); `styles/_includes.scss` `@forward`s `styles/configuration/_configuration.module.scss` → colours file. WHY: one place for colour tokens; `@use` replaces deprecated `@import`.
 - Data flow: none; static markup only. `pages/api/hello.js` = starter API route.
 
 ## Key decisions
