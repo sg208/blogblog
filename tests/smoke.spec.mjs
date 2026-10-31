@@ -22,3 +22,12 @@ test('api/hello returns JSON', async ({ request }) => {
   expect(response.ok()).toBe(true)
   expect(await response.json()).toEqual({ name: 'John Doe' })
 })
+
+test('keyboard focus on a post card shows the highlight border', async ({ page }) => {
+  await page.goto('/')
+  await page.keyboard.press('Tab')
+  await page.keyboard.press('Tab')
+  const firstCard = page.getByRole('link', { name: /Post 1/ })
+  await expect(firstCard).toBeFocused()
+  await expect(firstCard).toHaveCSS('border-top-color', 'rgb(0, 112, 243)')
+})
