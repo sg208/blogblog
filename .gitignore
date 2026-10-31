@@ -32,3 +32,9 @@ yarn-error.log*
 
 # vercel
 .vercel
+.pnpm-debug.log*
+
+# playwright
+/test-results/
+/playwright-report/
+/blob-report/

@@ -1,4 +1,4 @@
-@import "includes";
+@use "includes" as *;
 
 .container {
     min-height: 100vh;
@@ -90,7 +90,7 @@
     border-radius: 10px;
     transition: color 0.15s ease, border-color 0.15s ease;
 
-    &:hover, :focus, :active {
+    &:hover, &:focus-visible, &:active {
         color: $color-02;
         border-color: $color-02;
     }
