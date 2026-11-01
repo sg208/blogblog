@@ -1,7 +1,17 @@
-import '../styles/globals.css'
+import { Schibsted_Grotesk } from 'next/font/google'
+import '../styles/globals.scss'
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
-}
+const schibsted = Schibsted_Grotesk({
+  subsets: ['latin'],
+  weight: ['400', '500', '600'],
+  display: 'swap',
+  fallback: ['system-ui', 'sans-serif'],
+})
 
-export default MyApp
+const App = ({ Component, pageProps }) => (
+  <div className={schibsted.className}>
+    <Component {...pageProps} />
+  </div>
+)
+
+export default App

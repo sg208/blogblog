@@ -1,6 +1,6 @@
 # blogblog-nextjs
 
-This is a simple blog site built with **NextJS + React + SASS/SCSS + Vercel**. This is a mobile first responsive and WCAG 2.0 Level AA Compliant.
+This is a simple blog site built with **NextJS + React + SASS/SCSS + Vercel**. It is mobile first, responsive down to 360px, follows the system light or dark setting, and targets WCAG 2.2 Level AA (checked with axe in the test suite).
 
 ## Demo URL
 
@@ -25,7 +25,7 @@ Needs Node 20.9 or newer and pnpm (version pinned in `package.json`).
 pnpm build
 pnpm lint
 pnpm exec playwright install chromium   # once
-pnpm test                               # Playwright smoke tests against a production build
+pnpm test                               # Playwright smoke + axe accessibility tests against a production build
 ```
 
 ## Learn More
