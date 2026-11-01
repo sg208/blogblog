@@ -1,3 +1,10 @@
+.shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
 .skipLink {
   position: absolute;
   top: 0;
@@ -14,6 +21,10 @@
   }
 }
 
-.main:focus {
-  outline: none;
+.main {
+  flex: 1 0 auto;
+
+  &:focus {
+    outline: none;
+  }
 }

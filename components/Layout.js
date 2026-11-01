@@ -6,7 +6,7 @@ import styles from '../styles/Layout.module.scss'
 const DEFAULT_DESCRIPTION = 'A small blog about building for the web: mobile first, accessible, unhurried.'
 
 const Layout = ({ title, description = DEFAULT_DESCRIPTION, children }) => (
-  <>
+  <div className={styles.shell}>
     <Head>
       <title>{title}</title>
       <meta name="description" content={description} />
@@ -25,7 +25,7 @@ const Layout = ({ title, description = DEFAULT_DESCRIPTION, children }) => (
     </main>
 
     <SiteFooter />
-  </>
+  </div>
 )
 
 export default Layout
