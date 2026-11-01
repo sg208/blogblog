@@ -26,8 +26,7 @@ const Privacy = () => (
       for how it handles that data.
     </p>
     <p>
-      Pages load nothing from other services. The font is bundled with the site at build time, so
-      your browser does not contact Google Fonts or any other font host.
+      Pages load nothing from other services. The font is bundled with the site at build time.
     </p>
 
     <h2>Links to other sites</h2>
