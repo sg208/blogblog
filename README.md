@@ -42,7 +42,7 @@ pnpm test                               # smoke + axe tests against a production
 pnpm run deploy
 ```
 
-This builds the site and runs `wrangler deploy`. You need `wrangler` v4 installed globally, and `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` set in the environment.
+This builds the site and runs `wrangler deploy`. Wrangler 4 is a dev dependency, so you only need `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` set in the environment.
 
 ## License
 
