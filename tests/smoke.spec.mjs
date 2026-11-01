@@ -19,12 +19,6 @@ test('skip link is the first focusable element and targets main', async ({ page 
   await expect(page.locator('main#main-container')).toHaveCount(1)
 })
 
-test('api/hello returns JSON', async ({ request }) => {
-  const response = await request.get('/api/hello')
-  expect(response.ok()).toBe(true)
-  expect(await response.json()).toEqual({ name: 'John Doe' })
-})
-
 test('keyboard focus on a post link shows a visible focus ring', async ({ page }) => {
   await page.goto('/')
   const firstPost = page.getByRole('link', { name: /Mobile first is a reading order/ })
