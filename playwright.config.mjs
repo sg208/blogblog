@@ -9,7 +9,7 @@ export default defineConfig({
   use: { baseURL: `http://127.0.0.1:${port}` },
   projects: [{ name: 'chromium', use: { ...devices['Desktop Chrome'] } }],
   webServer: {
-    command: `pnpm build && pnpm start --port ${port}`,
+    command: `pnpm build && pnpm start --listen ${port}`,
     url: `http://127.0.0.1:${port}`,
     reuseExistingServer: !process.env.CI,
     timeout: 120_000,

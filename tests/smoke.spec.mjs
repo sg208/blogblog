@@ -19,12 +19,6 @@ test('skip link is the first focusable element and targets main', async ({ page 
   await expect(page.locator('main#main-container')).toHaveCount(1)
 })
 
-test('api/hello returns JSON', async ({ request }) => {
-  const response = await request.get('/api/hello')
-  expect(response.ok()).toBe(true)
-  expect(await response.json()).toEqual({ name: 'John Doe' })
-})
-
 test('keyboard focus on a post link shows a visible focus ring', async ({ page }) => {
   await page.goto('/')
   const firstPost = page.getByRole('link', { name: /Mobile first is a reading order/ })
@@ -41,4 +35,45 @@ test('unknown routes render the branded 404 page', async ({ page }) => {
   expect(response?.status()).toBe(404)
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Page not found')
   await expect(page.getByRole('link', { name: 'Back to the writing' })).toHaveAttribute('href', '/')
+})
+
+const legalPages = [
+  { path: '/accessibility', heading: 'Accessibility', title: 'Accessibility · blogblog' },
+  { path: '/privacy', heading: 'Privacy', title: 'Privacy · blogblog' },
+  { path: '/terms', heading: 'Terms', title: 'Terms · blogblog' },
+]
+
+for (const { path, heading, title } of legalPages) {
+  test(`${path} renders with one h1, a unique title and landmarks`, async ({ page }) => {
+    await page.goto(path)
+    await expect(page).toHaveTitle(title)
+    await expect(page.locator('html')).toHaveAttribute('lang', 'en')
+    await expect(page.getByRole('heading', { level: 1 })).toHaveCount(1)
+    await expect(page.getByRole('heading', { level: 1 })).toHaveText(heading)
+    await expect(page.getByRole('banner')).toHaveCount(1)
+    await expect(page.getByRole('main')).toHaveCount(1)
+    await expect(page.getByRole('contentinfo')).toHaveCount(1)
+  })
+}
+
+test('footer links to every legal page and the source on GitHub', async ({ page }) => {
+  await page.goto('/')
+  const footerNav = page.getByRole('navigation', { name: 'Site information' })
+  for (const { path, heading } of legalPages) {
+    await expect(footerNav.getByRole('link', { name: heading })).toHaveAttribute('href', path)
+  }
+  const sourceLink = footerNav.getByRole('link', { name: 'Source on GitHub (opens GitHub in a new tab)' })
+  await expect(sourceLink).toHaveAttribute('href', 'https://github.com/sg208/blogblog')
+  await expect(sourceLink).toHaveAttribute('target', '_blank')
+  await expect(sourceLink).toHaveAttribute('rel', 'noopener noreferrer')
+})
+
+test('footer legal links are keyboard reachable and navigate', async ({ page }) => {
+  await page.goto('/')
+  const privacyLink = page.getByRole('navigation', { name: 'Site information' }).getByRole('link', { name: 'Privacy' })
+  await privacyLink.focus()
+  await expect(privacyLink).toBeFocused()
+  await page.keyboard.press('Enter')
+  await expect(page).toHaveURL(/\/privacy\/?$/)
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Privacy')
 })
