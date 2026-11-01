@@ -5,7 +5,7 @@ const GITHUB_URL = 'https://github.com/sg208'
 
 const SiteHeader = () => (
   <header className={styles.header}>
-    <p className={styles.stack}>Next.js + React + Sass + Vercel</p>
+    <p className={styles.stack}>Next.js + React + Sass + Cloudflare</p>
     <nav aria-label="Primary">
       <ul className={styles.links}>
         <li>

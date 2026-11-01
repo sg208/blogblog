@@ -1,38 +1,48 @@
-# blogblog-nextjs
+# blogblog
 
-This is a simple blog site built with **NextJS + React + SASS/SCSS + Cloudflare Workers**. It is mobile first, responsive down to 360px, follows the system light or dark setting, and targets WCAG 2.2 Level AA (checked with axe in the test suite).
+A small blog layout built with Next.js, React and Sass. It is mobile first, works down to 360px, follows the system light or dark setting, and targets WCAG 2.2 level AA (checked with axe in the test suite). The posts are samples for now.
 
-## Demo URL
+Live: https://blogblog.engg.app
 
-https://blogblog.engg.app
+## Stack
 
-The site is a Next.js static export (`output: 'export'` in `next.config.mjs`, written to `out/`) served by a Cloudflare Worker on the sg208 account, configured in `wrangler.jsonc`. `pnpm run deploy` builds and runs `wrangler deploy`; it needs `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` in the environment. `pnpm start` serves `out/` locally with `serve`. The sample `/api/hello` route was removed with the move to a static export.
+- Next.js 16 (pages router) with React 19, exported as static HTML (`output: 'export'` in `next.config.mjs`, written to `out/`)
+- Sass modules, one per component, with colour tokens in `styles/configuration/`
+- Playwright and axe for tests
+- Cloudflare Worker serving `out/` as static assets (`wrangler.jsonc`)
 
-## Getting Started
+Pages: home, 404, and accessibility, privacy and terms pages linked from the footer.
 
-First, run the development server:
+## Run locally
+
+Needs Node 20.9 or newer and pnpm (version pinned in `package.json`).
 
 ```bash
 pnpm install
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open http://localhost:3000.
 
-Needs Node 20.9 or newer and pnpm (version pinned in `package.json`). Running `pnpm test` needs Node 22.12 or newer (the axe dev dependency requires it).
-
-## Checks
+## Test and build
 
 ```bash
-pnpm build
 pnpm lint
+pnpm build                              # static export to out/
+pnpm start                              # serve out/ locally
 pnpm exec playwright install chromium   # once
-pnpm test                               # Playwright smoke + axe accessibility tests against a production build
+pnpm test                               # smoke + axe tests against a production build
 ```
 
-## Learn More
+`pnpm test` needs Node 22.12 or newer, because the axe dev dependency requires it.
 
-I'll keep more updates as I go along.
+## Deploy
+
+```bash
+pnpm run deploy
+```
+
+This builds the site and runs `wrangler deploy`. You need `wrangler` v4 installed globally, and `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` set in the environment.
 
 ## License
 

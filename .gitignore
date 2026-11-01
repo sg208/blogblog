@@ -30,8 +30,7 @@ yarn-error.log*
 .env.test.local
 .env.production.local
 
-# vercel
-.vercel
+# debug (pnpm)
 .pnpm-debug.log*
 
 # playwright
