@@ -1,3 +1,7 @@
 /// include all you want to include in the config
 
 @forward "configuration.module.colors";
+
+/// Shared breakpoints (mobile first: styles grow upward from these)
+$bp-tablet: 48rem;
+$bp-desktop: 64rem;

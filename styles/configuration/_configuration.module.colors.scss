@@ -1,5 +1,36 @@
-/// place all colors here
+/// Colour tokens. Every value meets WCAG 2.2 AA against the surfaces it sits on:
+/// ink and muted text >= 4.5:1 on bg and surface, accent >= 3:1 as a focus ring.
 
-$color-01: #eaeaea;
-$color-02: #0070f3;
-$color-03: #fafafa;
+$light: (
+  "bg": #f3f3f0,
+  "surface": #e6e6e0,
+  "surface-hover": #dcdcd5,
+  "ink": #1c1c1c,
+  "muted": #55564f,
+  "accent": #4d634c,
+  "accent-hover": #3d4f3c,
+  "accent-ink": #ffffff,
+  "inverse-bg": #1c1c1c,
+  "inverse-ink": #f1f1ef,
+  "inverse-muted": #b4b5af,
+);
+
+$dark: (
+  "bg": #1c1c1c,
+  "surface": #262626,
+  "surface-hover": #303030,
+  "ink": #f1f1ef,
+  "muted": #a6a7a1,
+  "accent": #8fa68e,
+  "accent-hover": #a5b9a4,
+  "accent-ink": #1c1c1c,
+  "inverse-bg": #c8c5ba,
+  "inverse-ink": #1c1c1c,
+  "inverse-muted": #3f403b,
+);
+
+@mixin theme($palette) {
+  @each $name, $value in $palette {
+    --#{$name}: #{$value};
+  }
+}
