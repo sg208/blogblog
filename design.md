@@ -2,10 +2,10 @@
 
 ## Architecture
 
-- Next.js pages router: `pages/index.js` (home), `pages/404.js` (branded not-found), custom `pages/_document.js`; `pages/_app.js` loads `styles/globals.scss` and the Schibsted Grotesk font via `next/font` (self-hosted at build time).
+- Next.js pages router (static export to `out/`): `pages/index.js` (home), `pages/404.js` (branded not-found), `pages/accessibility.js` / `privacy.js` / `terms.js` (via `components/LegalPage.js`, linked from the footer), custom `pages/_document.js`; `pages/_app.js` loads `styles/globals.scss` and the Schibsted Grotesk font via `next/font` (self-hosted at build time).
 - Shared shell: `components/Layout.js` (head, skip link, header, `<main id="main-container">`, footer); `components/SiteHeader.js`, `components/PostList.js`, `components/SiteFooter.js`. Sample posts live in `data/posts.js`.
 - Styling: one SCSS module per component (`@use "includes" as *`); `styles/_includes.scss` `@forward`s `styles/configuration/_configuration.module.scss` (breakpoints) → colours file. WHY: one place for tokens; `@use` replaces deprecated `@import`.
-- Data flow: none; static markup only. `pages/api/hello.js` = starter API route.
+- Data flow: none; static markup only.
 
 ## Visual direction
 
