@@ -5,6 +5,11 @@
   background: var(--inverse-bg);
   color: var(--inverse-ink);
   --accent: var(--inverse-ink);
+
+  ::selection {
+    background: var(--inverse-ink);
+    color: var(--inverse-bg);
+  }
 }
 
 .close {
@@ -42,7 +47,7 @@
 .wordmark {
   margin-top: clamp(2rem, 1rem + 4vw, 4rem);
   padding-inline: var(--gutter);
-  font-size: 26.5vw;
+  font-size: calc((100vw - 2 * var(--gutter)) / 3.7);
   font-weight: 600;
   line-height: 0.8;
   letter-spacing: -0.055em;
