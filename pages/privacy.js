@@ -31,7 +31,7 @@ const Privacy = () => (
 
     <h2>Links to other sites</h2>
     <p>
-      The GitHub links in the header and footer take you to github.com. Once you follow one,
+      The GitHub icon in the footer and the GitHub links on these pages take you to github.com. Once you follow one,
       GitHub&rsquo;s own privacy policy applies.
     </p>
 
