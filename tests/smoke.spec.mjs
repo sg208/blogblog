@@ -62,10 +62,16 @@ test('footer links to every legal page and the source on GitHub', async ({ page 
   for (const { path, heading } of legalPages) {
     await expect(footerNav.getByRole('link', { name: heading })).toHaveAttribute('href', path)
   }
-  const sourceLink = footerNav.getByRole('link', { name: 'Source on GitHub (opens GitHub in a new tab)' })
+  const sourceLink = footerNav.getByRole('link', { name: 'Source code on GitHub (opens in a new tab)' })
   await expect(sourceLink).toHaveAttribute('href', 'https://github.com/sg208/blogblog')
+  await expect(sourceLink.locator('svg')).toHaveAttribute('aria-hidden', 'true')
   await expect(sourceLink).toHaveAttribute('target', '_blank')
   await expect(sourceLink).toHaveAttribute('rel', 'noopener noreferrer')
+})
+
+test('site chrome has exactly one GitHub link', async ({ page }) => {
+  await page.goto('/')
+  await expect(page.locator('header a[href*="github.com"], footer a[href*="github.com"]')).toHaveCount(1)
 })
 
 test('footer legal links are keyboard reachable and navigate', async ({ page }) => {

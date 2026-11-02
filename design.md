@@ -6,7 +6,7 @@
 - Shared shell: `components/Layout.js` (head, skip link, header, `<main id="main-container">`, footer); `components/SiteHeader.js`, `components/PostList.js`, `components/SiteFooter.js`. Sample posts live in `data/posts.js`.
 - Styling: one SCSS module per component (`@use "includes" as *`); `styles/_includes.scss` `@forward`s `styles/configuration/_configuration.module.scss` (breakpoints) → colours file. WHY: one place for tokens; `@use` replaces deprecated `@import`.
 - Data flow: none; static markup only.
-- Footer: `components/SiteFooter.js` links Accessibility / Privacy / Terms (`next/link`) + "Source on GitHub" → `REPO_URL` in `data/site.js:1` (new tab, announced). <!-- enggflo -->
+- Footer: `components/SiteFooter.js` links Accessibility / Privacy / Terms (`next/link`) + one GitHub mark icon link → `REPO_URL` in `data/site.js:1` (`aria-label`, new tab, announced); the only GitHub link in site chrome. <!-- enggflo -->
 - Hosting: `pnpm run deploy` = `pnpm build && wrangler deploy` (`package.json`); Cloudflare Worker serves `out/` as static assets, custom domain `blogblog.engg.app`, `not_found_handling: 404-page`, `workers_dev`/`preview_urls` off (`wrangler.jsonc`). WHY: static export needs no server runtime; Vercel, Netlify, Railway, Cloudflare Pages and engg.me retired. <!-- enggflo -->
 
 ## Visual direction
