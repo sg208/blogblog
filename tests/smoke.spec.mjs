@@ -104,3 +104,9 @@ test('pages carry Open Graph title and description', async ({ page }) => {
   await expect(page.locator('meta[property="og:description"]')).toHaveCount(1)
   await expect(page.locator('meta[name="twitter:card"]')).toHaveAttribute('content', 'summary')
 })
+
+test('header Writing link from another page moves focus to the post list', async ({ page }) => {
+  await page.goto('/privacy')
+  await page.getByRole('navigation', { name: 'Primary' }).getByRole('link', { name: 'Writing' }).click()
+  await expect(page.locator('#writing')).toBeFocused()
+})

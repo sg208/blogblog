@@ -1,8 +1,16 @@
+import { useEffect } from 'react'
 import { formatDate } from '../data/posts'
 import styles from '../styles/PostList.module.scss'
 
 const PostList = ({ posts }) => {
   const postCountLabel = posts.length === 1 ? '1\u00a0post' : `${posts.length}\u00a0posts`
+
+  // Arriving from another page via the header link: the click handler could not find #writing yet.
+  useEffect(() => {
+    if (window.location.hash === '#writing') {
+      document.getElementById('writing')?.focus({ preventScroll: true })
+    }
+  }, [])
 
   return (
     <section id="writing" tabIndex={-1} className={styles.section} aria-labelledby="writing-title">
