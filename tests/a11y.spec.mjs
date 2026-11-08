@@ -28,7 +28,10 @@ for (const route of routes) {
   test(`${route} has no horizontal scroll at 360px`, async ({ page }) => {
     await page.setViewportSize({ width: 360, height: 800 })
     await page.goto(route)
-    const hasOverflow = await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth)
-    expect(hasOverflow).toBe(false)
+    const { scrollWidth, clientWidth } = await page.evaluate(() => ({
+      scrollWidth: document.documentElement.scrollWidth,
+      clientWidth: document.documentElement.clientWidth,
+    }))
+    expect(scrollWidth).toBeLessThanOrEqual(clientWidth)
   })
 }

@@ -2,6 +2,12 @@
 
 .section {
   display: grid;
+
+  // Focus target for "Start reading" and the header link; the ring is not needed on a non-interactive target.
+  &:focus {
+    outline: none;
+  }
+
   gap: 2rem;
   padding: clamp(5rem, 3rem + 8vw, 10rem) var(--gutter);
 

@@ -76,10 +76,31 @@ test('site chrome has exactly one GitHub link', async ({ page }) => {
 
 test('footer legal links are keyboard reachable and navigate', async ({ page }) => {
   await page.goto('/')
-  const privacyLink = page.getByRole('navigation', { name: 'Site information' }).getByRole('link', { name: 'Privacy' })
+  const footerNav = page.getByRole('navigation', { name: 'Site information' })
+  const privacyLink = footerNav.getByRole('link', { name: 'Privacy' })
   await privacyLink.focus()
   await expect(privacyLink).toBeFocused()
   await page.keyboard.press('Enter')
   await expect(page).toHaveURL(/\/privacy\/?$/)
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Privacy')
+})
+
+test('start reading moves focus to the post list', async ({ page }) => {
+  await page.goto('/')
+  await page.getByRole('link', { name: 'Start reading' }).click()
+  await expect(page.locator('#writing')).toBeFocused()
+})
+
+test('header writing link moves focus to the post list', async ({ page }) => {
+  await page.goto('/')
+  const primaryNav = page.getByRole('navigation', { name: 'Primary' })
+  await primaryNav.getByRole('link', { name: 'Writing' }).click()
+  await expect(page.locator('#writing')).toBeFocused()
+})
+
+test('pages carry Open Graph title and description', async ({ page }) => {
+  await page.goto('/')
+  await expect(page.locator('meta[property="og:title"]')).toHaveAttribute('content', 'blogblog')
+  await expect(page.locator('meta[property="og:description"]')).toHaveCount(1)
+  await expect(page.locator('meta[name="twitter:card"]')).toHaveAttribute('content', 'summary')
 })

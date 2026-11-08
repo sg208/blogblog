@@ -10,6 +10,7 @@ Live: https://blogblog.engg.app
 - Sass modules, one per component, with colour tokens in `styles/configuration/`
 - Playwright and axe for tests
 - Cloudflare Worker serving `out/` as static assets (`wrangler.jsonc`)
+- Response headers (security and a long cache for hashed assets) come from `public/_headers`, which the export copies into `out/`
 
 Pages: home, 404, and accessibility, privacy and terms pages linked from the footer.
 

@@ -1,15 +1,14 @@
 import Layout from '../components/Layout'
 import PostList from '../components/PostList'
 import { posts } from '../data/posts'
+import { SITE_DESCRIPTION } from '../data/site'
 import styles from '../styles/Home.module.scss'
 
 const Home = () => (
   <Layout title="blogblog">
     <section className={styles.hero} aria-labelledby="site-title">
       <div className={styles.opening}>
-        <p className={styles.lede}>
-          A small blog about building for the web: mobile first, accessible, unhurried.
-        </p>
+        <p className={styles.lede}>{SITE_DESCRIPTION}</p>
         <a href="#writing" className={styles.action}>
           Start reading
         </a>

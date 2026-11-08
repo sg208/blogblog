@@ -3,11 +3,11 @@
 ## Architecture
 
 - Next.js pages router (static export to `out/`): `pages/index.js` (home), `pages/404.js` (branded not-found), `pages/accessibility.js` / `privacy.js` / `terms.js` (via `components/LegalPage.js`, linked from the footer), custom `pages/_document.js`; `pages/_app.js` loads `styles/globals.scss` and the Schibsted Grotesk font via `next/font` (self-hosted at build time).
-- Shared shell: `components/Layout.js` (head, skip link, header, `<main id="main-container">`, footer); `components/SiteHeader.js`, `components/PostList.js`, `components/SiteFooter.js`. Sample posts live in `data/posts.js`.
+- Shared shell: `components/Layout.js` (head with description + Open Graph meta from `data/site.js`, skip link, header, `<main id="main-container">`, footer); `components/SiteHeader.js`, `components/PostList.js`, `components/SiteFooter.js`. Sample posts live in `data/posts.js`.
 - Styling: one SCSS module per component (`@use "includes" as *`); `styles/_includes.scss` `@forward`s `styles/configuration/_configuration.module.scss` (breakpoints) → colours file. WHY: one place for tokens; `@use` replaces deprecated `@import`.
 - Data flow: none; static markup only.
 - Footer: `components/SiteFooter.js` links Accessibility / Privacy / Terms (`next/link`) + one GitHub mark icon link → `REPO_URL` in `data/site.js:1` (`aria-label`, new tab, announced); the only GitHub link in site chrome. <!-- enggflo -->
-- Hosting: `pnpm run deploy` = `pnpm build && wrangler deploy` (`package.json`); Cloudflare Worker serves `out/` as static assets, custom domain `blogblog.engg.app`, `not_found_handling: 404-page`, `workers_dev`/`preview_urls` off (`wrangler.jsonc`). WHY: static export needs no server runtime; Vercel, Netlify, Railway, Cloudflare Pages and engg.me retired. <!-- enggflo -->
+- Hosting: `pnpm run deploy` = `pnpm build && wrangler deploy` (`package.json`); Cloudflare Worker serves `out/` as static assets, custom domain `blogblog.engg.app`, `not_found_handling: 404-page`, `workers_dev`/`preview_urls` off (`wrangler.jsonc`); response headers from `public/_headers` (nosniff, referrer, permissions policy; immutable `/_next/static/*`; no CSP yet). WHY: static export needs no server runtime; Vercel, Netlify, Railway, Cloudflare Pages and engg.me retired. <!-- enggflo -->
 
 ## Visual direction
 
