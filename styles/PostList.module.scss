@@ -2,6 +2,7 @@
 
 .section {
   display: grid;
+
   gap: 2rem;
   padding: clamp(5rem, 3rem + 8vw, 10rem) var(--gutter);
 
@@ -9,6 +10,11 @@
     grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
     gap: var(--gutter);
     align-items: start;
+  }
+
+  // Focus target for "Start reading" and the header link; show a ring only for keyboard focus.
+  &:focus:not(:focus-visible) {
+    outline: none;
   }
 }
 
